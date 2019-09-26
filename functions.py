@@ -1,3 +1,4 @@
+import cfg
 from random import randint
 
 # Define a Jogada do BOT
@@ -10,19 +11,16 @@ def bot():
 # e define os pontos a serem somados ou subtraidos    
 def batalha(jogador, bot):
     if (jogador == bot):
-        pontos = 1
+        pontos = cfg.pontosEmpatar
     elif (jogador == "PAPEL" and bot == "PEDRA"):
-        pontos = 3
-    elif (jogador == "PAPEL" and bot == "TESOURA"):
-        pontos = -2
-    elif (jogador == "PEDRA" and bot == "PAPEL"):
-        pontos = -2
+        pontos = cfg.pontosGanhar
     elif (jogador == "PEDRA" and bot == "TESOURA"):
-        pontos = 3
+        pontos = cfg.pontosGanhar
     elif (jogador == "TESOURA" and bot == "PAPEL"):
-        pontos = 3
-    elif (jogador == "TESOURA" and bot == "PEDRA"):
-        pontos = -2
+        pontos = cfg.pontosGanhar
+    else:
+        pontos = cfg.pontosPerder
+    pass
     return pontos
 
 # Atualiza o Placar no arquivo TXT
