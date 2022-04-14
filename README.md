@@ -11,7 +11,7 @@
 
 <p align="center">
   <p align="center">
-  <img alt="jokenpo" src="./docs/jokenpo.png" width="100%">
+  <img alt="jokenpo" src="./assets/img/header_preview.png" width="100%">
 </p>
 
 ## 💻 Project
