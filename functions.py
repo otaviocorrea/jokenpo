@@ -1,4 +1,5 @@
 import cfg
+import os.path
 from random import randint
 
 # Define a Jogada do BOT
@@ -27,6 +28,10 @@ def batalha(jogador, bot):
 def atualizarPlacar(dados):
     lista = []
     final = ""
+
+    if(not os.path.exists('rank.txt')):
+        file = open("rank.txt", "+w")
+        file.write('')
 
     for line in open('rank.txt'):
         lista.append(line)
