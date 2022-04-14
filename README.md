@@ -25,14 +25,14 @@ A simple but amazing Jokenpo game developed in python for language fixing!
 
 ## 📜 Rules
 
-- Cada vitoria sua será contabilizado 3 pontos;
-- Cada empate entre você e a máquina, contabilizará 1 ponto;
-- Cada perda contabilizará -1 ponto à pontuaçao total atual;
-- São exigidos um total de 10 pontos necessários para finalizar a partida;
-- Para selecionar a jogada digite, em maiúsculo ou minúsculo a respectiva palavra da jogada;
-  - 🪨 pedra;
-  - 📄 papel;
-  - ✂️ Tesoura.
-- Os resultados serão mostrados ao final da partida mas sempre é possível verificar em rank.txt.
+- Each victory you win will be counted `3` points;
+- Each tie between you and the machine will count `1` point;
+- Each loss will count `-1` point to the current total score;
+- A total of `10` points are required to finish the match;
+- To select the move, type, in uppercase or lowercase, the respective word of the move;
+  - 🪨 Stone;
+  - 📄 Paper;
+  - ✂️ Scissors.
+- The results will be shown at the end of the match but it is always possible to check in rank.txt.
 
-<small>⚠️ Todas as configurações, que estão presentes no arquivo cfg.py, podem ser manipuladas para facilitar ou dificultar o jogo.⚠️</small>
+##### ⚠️ All settings, which are present in the [cfg.py](https://github.com/otaviocorrea/jokenpo/blob/master/cfg.py) file, can be manipulated to make the game easier or harder.⚠️
