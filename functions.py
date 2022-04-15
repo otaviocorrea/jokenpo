@@ -1,43 +1,47 @@
-import cfg
+import settings
+import os.path
 from random import randint
 
-# Define a Jogada do BOT
-def bot():
-    lista_bot = ['PAPEL', 'PEDRA', 'TESOURA']
-    jogada_bot = lista_bot[randint(0,2)]
-    return jogada_bot
+# Defines the BOT Play
+def get_bot_choice():
+  return settings.options[randint(0,2)]
 
-# Compara a jogada do Jogador com a do Bot 
-# e define os pontos a serem somados ou subtraidos    
-def batalha(jogador, bot):
-    if (jogador == bot):
-        pontos = cfg.pontosEmpatar
-    elif (jogador == "PAPEL" and bot == "PEDRA"):
-        pontos = cfg.pontosGanhar
-    elif (jogador == "PEDRA" and bot == "TESOURA"):
-        pontos = cfg.pontosGanhar
-    elif (jogador == "TESOURA" and bot == "PAPEL"):
-        pontos = cfg.pontosGanhar
-    else:
-        pontos = cfg.pontosPerder
-    pass
-    return pontos
+# Compares the Player's move with the Bot's
+# and defines the points to be added or subtracted   
+def battle(player_choice, bot_choice):
+  if (player_choice == bot_choice):
+      pontos = settings.points_on_tie
+  elif (player_choice == 1 and bot_choice == 2):
+      pontos = settings.points_when_winning
+  elif (player_choice == 2 and bot_choice == 3):
+      pontos = settings.points_when_winning
+  elif (player_choice == 3 and bot_choice == 1):
+      pontos = settings.points_when_winning
+  else:
+      pontos = settings.points_on_losing
+  pass
+  return pontos
 
-# Atualiza o Placar no arquivo TXT
-def atualizarPlacar(dados):
-    lista = []
-    final = ""
+# Update Scoreboard in TXT file
+def updateScore(dados):
+  lista = []
+  final = ""
 
-    for line in open('rank.txt'):
-        lista.append(line)
+  if(not os.path.exists('rank.txt')):
+    file = open("rank.txt", "+w")
+    file.write('')
 
-    dados = "\n" + str(dados)
-    lista.append(dados)
-   
-    for i in lista:
-        final = final + i
+  for line in open('rank.txt'):
+    lista.append(line)
 
-    print(final)
+  dados = "\n" + str(dados)
+  lista.append(dados)
+  
+  for i in lista:
+    final = final + i
 
-    placar = open("rank.txt", "+w")
-    placar.write(final)
+  print("📜 Play history: ")
+  print(final)
+
+  placar = open("rank.txt", "+w")
+  placar.write(final)

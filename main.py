@@ -1,38 +1,34 @@
-import cfg
+import os
+import settings
 import header
 import functions
 
-# CABEÇALHO
+os.system('clear')
 header.printHeader()
 
-recordes = []
-pontos = 0
-rodadas = 0
-jogador = input("Digite seu Nome:").upper()
+spots = 0
+rounds = 0
+player = input("Type your name: ").upper()
 
-while(pontos < cfg.pontosNecessarios):
-    print("PONTOS: {0} | RODADAS: {1}\n".format(pontos, rodadas))
-    print("Insira sua Jogada")
-    escolha = input("PAPEL, PEDRA ou TESOURA?").upper()
-    if(escolha == "PAPEL" or escolha == "PEDRA" or escolha == "TESOURA" ):
-        bot = functions.bot()
-        duelo = functions.batalha(escolha, bot)
-        if (duelo == 3):
-            print("Você: {0}\nBot: {1}\nVocê ganhou\n\n\n".format(escolha, bot))
-        elif (duelo == 1):
-            print("Você: {0}\nBot: {1}\nEmpate\n\n\n".format(escolha, bot))
-        else:
-            print("Você: {0}\nBot: {1}\nVocê perdeu\n\n\n".format(escolha, bot))
-        pass
-        pontos = pontos + duelo
-        rodadas = rodadas + 1
-    else:
-        print("{0} -  Não é uma jogada valida!\n\n\n\n".format(escolha))
-    pass
+while(spots < settings.pointsNeeded):
+	print("\nSPOTS: {0} | ROUNDS: {1}\n".format(spots, rounds))
+	print("Insert your move: ")
+	player_choice = int(input("\n📄 PAPER (1) | 🪨 STONE (2) | ✂️ SCISSORS (3): "))
+	if(player_choice in settings.options):
+		bot_choice = functions.get_bot_choice()
+		duel = functions.battle(player_choice, bot_choice)
+		if (duel == settings.points_when_winning):
+			print("\n😎 You: {0}\n🤖 Bot: {1}\n\n.:: You won 🥇\n".format(player_choice, bot_choice))
+		elif (duel == settings.points_on_tie):
+			print("\n😎 You: {0}\n🤖 Bot: {1}\n\n.:: A tie 😕\n".format(player_choice, bot_choice))
+		else:
+			print("\n😎 You: {0}\n🤖 Bot: {1}\n\n.:: You lost 😞\n".format(player_choice, bot_choice))
+		pass
+		spots = spots + duel
+		rounds = rounds + 1
+	else:
+		print("\n 🚨 {0} - It's not a valid move! 🚨\n\n".format(player_choice))
+	pass
 
-dados = str(rodadas) + " " + str(pontos)  + " " + str(jogador)
-placar = functions.atualizarPlacar(dados)
-
-
-
-    
+dados = str(rounds) + " " + str(spots)  + " " + str(player)
+placar = functions.updateScore(dados)
